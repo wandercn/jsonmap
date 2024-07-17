@@ -7,7 +7,7 @@ authors = ["wandercn<wander@email.cn>"]
 description = "JsonMap for store values of multiple types value in one Map."
 homepage = "https://github.com/wandercn/jsonmap"
 repository = "https://github.com/wandercn/jsonmap"
-keywords = ["hashmap", "jsonmap", "map", "gomap", "gostd","json"]
+keywords = ["hashmap", "jsonmap", "map", "gomap","json"]
 categories = ["api-bindings", "accessibility", "development-tools", "compilers"]
 
 [dependencies]
