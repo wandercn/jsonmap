@@ -22,7 +22,7 @@ fn main() {
         "key4",
         vec![1_i32.into(), "b".into(), 10.into(), 64.0.into()].into(),
     );
-    kv_map.insert("userInfo", obj.into()); //
+    kv_map.insert("userInfo", obj.into());
 
     // 使用 keys 方法获取所有键的集合，并打印每个键和对应的值
     println!("Keys:");
@@ -48,10 +48,11 @@ fn main() {
     for (key, value) in kv_map.iter() {
         println!("Key: {}, Value: {}", key, value);
     }
-    // 使用 into_iter 方法获取所有权，并打印每个键值对的键和值
-    // 将 AnyMap 转换为 JSON 字符串
+    // 将 Map 转换为 JSON 字符串
     let json_string = serde_json::to_string(&kv_map).unwrap();
     println!("JSON String: {}", json_string);
+
+    // 使用 into_iter 方法获取所有权，并打印每个键值对的键和值
     println!("Iterating with into_iter:");
     for (key, value) in kv_map.into_iter() {
         println!("Key: {}, Value: {}", key, value);
@@ -59,6 +60,40 @@ fn main() {
 }
 
 
+```
+## result
+
+```
+Keys:
+Key: key3, Value: 中国
+Key: key4, Value: [1, b, 10, 64]
+Key: key1, Value: 42
+Key: userInfo, Value: {name : 李四 , 年龄: 29 , userid: 1000230203 , }
+Key: key2, Value: 190.5
+Values:
+Value: 中国
+Value: [1, b, 10, 64]
+Value: 42
+Value: {name : 李四 , 年龄: 29 , userid: 1000230203 , }
+Value: 190.5
+value: 中国
+value: [1, b, 10, 64]
+value: 42
+value: {name : 李四 , 年龄: 29 , userid: 1000230203 , }
+value: 190.5
+Iterating with iter:
+Key: key3, Value: 中国
+Key: key4, Value: [1, b, 10, 64]
+Key: key1, Value: 42
+Key: userInfo, Value: {name : 李四 , 年龄: 29 , userid: 1000230203 , }
+Key: key2, Value: 190.5
+JSON String: {"key3":"中国","key4":[1,"b",10,64.0],"key1":42,"userInfo":{"name ":"李四","年龄":29,"userid":"1000230203"},"key2":190.5}
+Iterating with into_iter:
+Key: key3, Value: 中国
+Key: key4, Value: [1, b, 10, 64]
+Key: key1, Value: 42
+Key: userInfo, Value: {name : 李四 , 年龄: 29 , userid: 1000230203 , }
+Key: key2, Value: 190.5
 ```
 
 ## Cargo.toml

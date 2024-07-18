@@ -15,7 +15,7 @@ fn main() {
         "key4",
         vec![1_i32.into(), "b".into(), 10.into(), 64.0.into()].into(),
     );
-    kv_map.insert("userInfo", obj.into()); //
+    kv_map.insert("userInfo", obj.into());
 
     // 使用 keys 方法获取所有键的集合，并打印每个键和对应的值
     println!("Keys:");
@@ -41,10 +41,11 @@ fn main() {
     for (key, value) in kv_map.iter() {
         println!("Key: {}, Value: {}", key, value);
     }
-    // 使用 into_iter 方法获取所有权，并打印每个键值对的键和值
-    // 将 AnyMap 转换为 JSON 字符串
+    // 将 Map 转换为 JSON 字符串
     let json_string = serde_json::to_string(&kv_map).unwrap();
     println!("JSON String: {}", json_string);
+
+    // 使用 into_iter 方法获取所有权，并打印每个键值对的键和值
     println!("Iterating with into_iter:");
     for (key, value) in kv_map.into_iter() {
         println!("Key: {}, Value: {}", key, value);
