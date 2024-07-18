@@ -62,9 +62,11 @@ fn main() {
 ```
 
 Cargo.toml
+
 `
+
 [dependencies]
-jsonmap =  "0.1.0" 
+jsonmap =  "0.1.0"
 serde_json = "1.0"
 
 `
