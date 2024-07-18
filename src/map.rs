@@ -95,6 +95,17 @@ where
     }
 }
 
+impl<K> Default for JsonMap<K>
+where
+    K: Eq + Clone + Hash,
+{
+    fn default() -> Self {
+        Self {
+            inner: HashMap::new(),
+        }
+    }
+}
+
 impl<K> FromIterator<(K, JsonV<K>)> for JsonMap<K>
 where
     K: Eq + Clone + Hash,
