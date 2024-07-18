@@ -1,6 +1,6 @@
 [package]
 name = "jsonmap"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2018"
 license = "GPL-3.0-or-later"
 authors = ["wandercn<wander@email.cn>"]
@@ -8,7 +8,9 @@ description = "JsonMap for store values of multiple types value in one Map."
 homepage = "https://github.com/wandercn/jsonmap"
 repository = "https://github.com/wandercn/jsonmap"
 keywords = ["hashmap", "jsonmap", "map", "gomap", "json"]
-categories = ["api-bindings", "accessibility", "development-tools", "compilers"]
+categories = ["data-structures", "accessibility", "development-tools", "compilers"]
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
+[dev-dependencies]
+serde_json = "1.0"

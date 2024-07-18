@@ -9,6 +9,12 @@ use std::iter::FromIterator;
 use std::iter::IntoIterator;
 use std::iter::Iterator;
 
+/// The generic parameter K in JsonMap<K> represents the key in the map, and it stores values implemented by the enum type JsonV.
+/// <details class="rustdoc-toggle top-doc">
+/// <summary class="docblock">zh-cn</summary>
+/// JsonMap<K> 中的泛型参数K是Map中的键，存储的值是由枚举类型JsonV实现的。
+/// </details>
+///
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct JsonMap<K>
 where
@@ -22,74 +28,74 @@ impl<K> JsonMap<K>
 where
     K: Eq + Clone + Hash,
 {
-    // 创建一个新的 Map 实例
+    /// 创建一个新的 Map 实例
     pub fn new() -> Self {
         Self {
             inner: HashMap::new(),
         }
     }
 
-    // 插入键值对到 Map 中
+    ///插入键值对到 Map 中
     pub fn insert(&mut self, key: K, value: JsonV<K>) {
         self.inner.insert(key, value);
     }
 
-    // 获取键对应的值的可变引用
+    /// 获取键对应的值的可变引用
     pub fn get_mut(&mut self, key: &K) -> Option<&mut JsonV<K>> {
         self.inner.get_mut(key)
     }
 
-    // 获取或插入键值对，并返回对值的可变引用
+    /// 获取或插入键值对，并返回对值的可变引用
     pub fn entry(&mut self, key: K) -> Entry<'_, K, JsonV<K>> {
         self.inner.entry(key)
     }
 
-    // 获取所有键的集合
+    /// 获取所有键的集合
     pub fn keys(&self) -> impl Iterator<Item = &K> {
         self.inner.keys()
     }
 
-    // 获取所有值的集合的不可变引用
+    /// 获取所有值的集合的不可变引用
     pub fn values(&self) -> impl Iterator<Item = &JsonV<K>> {
         self.inner.values()
     }
 
-    // 获取所有值的集合的可变引用
+    /// 获取所有值的集合的可变引用
     pub fn values_mut(&mut self) -> impl Iterator<Item = &mut JsonV<K>> {
         self.inner.values_mut()
     }
 
-    // 获取键对应的值
+    /// 获取键对应的值
     pub fn get(&self, key: &K) -> Option<&JsonV<K>> {
         self.inner.get(key)
     }
 
-    // 移除键值对
+    /// 移除键值对
     pub fn remove(&mut self, key: &K) -> Option<JsonV<K>> {
         self.inner.remove(key)
     }
 
-    // 检查是否包含指定的键
+    /// 检查是否包含指定的键
     pub fn contains_key(&self, key: &K) -> bool {
         self.inner.contains_key(key)
     }
 
-    // 获取 Map 中键值对的数量
+    /// 获取 Map 中键值对的数量
     pub fn len(&self) -> usize {
         self.inner.len()
     }
 
-    // 清空 Map 中的所有键值对
+    /// 清空 Map 中的所有键值对
     pub fn clear(&mut self) {
         self.inner.clear();
     }
 
-    // 实现 iter 方法，返回 Map 的不可变迭代器
+    ///实现 iter 方法，返回 Map 的不可变迭代器
     pub fn iter(&self) -> impl Iterator<Item = (&K, &JsonV<K>)> {
         self.inner.iter()
     }
 
-    // 实现 iter_mut 方法，返回 Map 的可变迭代器
+    /// 实现 iter_mut 方法，返回 Map 的可变迭代器
     pub fn iter_mut(&mut self) -> impl Iterator<Item = (&K, &mut JsonV<K>)> {
         self.inner.iter_mut()
     }
@@ -129,7 +135,13 @@ where
     }
 }
 
-/// 通过枚举类型支持 HashMap 内的Vlaue值可以同时存储 浮点型，整数，字符串，数组，对象类型。
+/// This enum type supports storing values of multiple types including floats, integers, strings, arrays, and objects within a map.
+/// The generic parameter K in `JsonV<K>`is used exclusively as a key within the Object objects. Typically, keys can be basic types such as strings, i32, i64, for instance `Json<String>`, `JsonMap<String>`, `JsonMap<i64>`.
+/// <details class="rustdoc-toggle top-doc">
+/// <summary class="docblock">zh-cn</summary>
+/// 通过枚举类型支持，Map内的值可以同时存储浮点型、整数、字符串、数组和对象类型。JsonV&lt;K&gt;中的泛型参数K仅在内部的Object对象中作为Key使用。通常，Key可以是字符串、i32、i64等基础类型，例如 Json&lt;String&gt;,JsonMap&lt;String&gt;,JsonMap&lt;i64&gt; .
+/// </details>
+///
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum JsonV<K>
