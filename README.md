@@ -2,7 +2,7 @@
 JsonMap for store values of multiple types value in one Map.
 
 
-#Example
+## Example
 
 ```
 use jsonmap::JsonMap;
@@ -61,12 +61,11 @@ fn main() {
 
 ```
 
-Cargo.toml
-
-`
+## Cargo.toml
+```
 
 [dependencies]
 jsonmap =  "0.1.0"
 serde_json = "1.0"
 
-`
+```
